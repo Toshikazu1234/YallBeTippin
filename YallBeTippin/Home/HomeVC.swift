@@ -82,6 +82,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
             withIdentifier: MenuRow.id,
             for: indexPath) as! MenuRow
         cell.configure(menuItems[indexPath.row], indexPath)
+        cell.delegate = self
         return cell
     }
     
