@@ -23,7 +23,7 @@ class TipVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Just gonna asking a question"
+        title = "Just gonna ask a question"
         
     }
 }
