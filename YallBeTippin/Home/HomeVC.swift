@@ -9,7 +9,6 @@ import UIKit
 
 class HomeVC: UIViewController {
     var menuItems: [MenuItem] = []
-    var orderItems: [MenuItem] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,10 +28,10 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func didTapViewCart(_ sender: UIBarButtonItem) {
-        if orderItems.isEmpty {
-            displayAlert()
-        } else {
+        if menuItems.contains(where: {$0.orderCount > 0}) {
             navigateToCart()
+        } else {
+            displayAlert()
         }
     }
     
@@ -54,10 +53,20 @@ class HomeVC: UIViewController {
         let vc = sb.instantiateViewController(identifier: CartVC.id) { [unowned self] coder in
             let vc = CartVC(
                 coder: coder,
-                orderItems: orderItems)
+                orderItems: getOrderItems())
             return vc
         }
         pushVC(vc)
+    }
+    
+    func getOrderItems() -> [MenuItem] {
+        var orderItems: [MenuItem] = []
+        menuItems.forEach { item in
+            if item.orderCount > 0 {
+                orderItems.append(item)
+            }
+        }
+        return orderItems
     }
 }
 
