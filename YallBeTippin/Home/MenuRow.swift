@@ -7,8 +7,16 @@
 
 import UIKit
 
+protocol MenuRowDelegate: AnyObject {
+    func didAdd(_ orderItem: MenuItem, _ indexPath: IndexPath)
+    func didMinus(_ orderItem: MenuItem, _ indexPath: IndexPath)
+}
+
 class MenuRow: UITableViewCell {
     static let id = "MenuRow"
+    var menuItem: MenuItem?
+    var indexPath: IndexPath?
+    weak var delegate: MenuRowDelegate?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -34,10 +42,22 @@ class MenuRow: UITableViewCell {
         minusButton.layer.cornerRadius = minusButton.frame.height / 2
     }
     
-    func configure(menuItem: MenuItem) {
+    func configure(_ menuItem: MenuItem, _ indexPath: IndexPath) {
+        self.menuItem = menuItem
+        self.indexPath = indexPath
         nameLabel.text = menuItem.name
         priceLabel.text = menuItem.price.toCurrency()
         img.image = UIImage(named: menuItem.img)
         verticalStack.isHidden = menuItem.orderCount > 0 ? false : true
+    }
+    
+    @IBAction func didTapPlusButton() {
+        guard let menuItem, let indexPath else { return }
+        delegate?.didAdd(menuItem, indexPath)
+    }
+    
+    @IBAction func didTapMinusButton() {
+        guard let menuItem, let indexPath else { return }
+        delegate?.didMinus(menuItem, indexPath)
     }
 }
