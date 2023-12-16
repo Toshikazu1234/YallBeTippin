@@ -70,21 +70,25 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: MenuRow.id,
             for: indexPath) as! MenuRow
-        cell.configure(menuItem: menuItems[indexPath.row])
+        cell.configure(menuItems[indexPath.row], indexPath)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item = menuItems[indexPath.row]
-        if !orderItems.contains(where: { menuItem in
-            item.name == menuItem.name
-        }) {
-            orderItems.append(item)
-        } else if var orderItem = orderItems.first(where: { menuItem in
-            item.name == menuItem.name
-        }) {
-            orderItem.orderCount += 1
-        }
+        menuItems[indexPath.row].orderCount += 1
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+}
+
+extension HomeVC: MenuRowDelegate {
+    func didAdd(_ orderItem: MenuItem, _ indexPath: IndexPath) {
+        menuItems[indexPath.row].orderCount += 1
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
+    func didMinus(_ orderItem: MenuItem, _ indexPath: IndexPath) {
+        menuItems[indexPath.row].orderCount -= 1
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }
