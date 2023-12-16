@@ -13,6 +13,16 @@ protocol CartVCDelegate: AnyObject {
 
 class CartVC: UIViewController {
     static let id = "CartVC"
+    
+    lazy var confirmButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(
+            title: "Confirm",
+            style: .plain,
+            target: self,
+            action: #selector(didTapConfirmButton))
+        return button
+    }()
+    
     @IBOutlet weak var tableView: UITableView!
     
     var orderItems: [MenuItem]
@@ -31,6 +41,7 @@ class CartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Cart"
+        navigationItem.rightBarButtonItem = confirmButton
         setupTableView()
     }
     
@@ -45,6 +56,19 @@ class CartVC: UIViewController {
         tableView.register(
             UINib(nibName: CartRow.id, bundle: nil),
             forCellReuseIdentifier: CartRow.id)
+    }
+    
+    @objc func didTapConfirmButton() {
+        let sb = UIStoryboard(
+            name: TipVC.id,
+            bundle: nil)
+        let vc = sb.instantiateViewController(identifier: TipVC.id) { [unowned self] coder in
+            let tipVC = TipVC(
+                coder: coder,
+                orderItems: orderItems)
+            return tipVC
+        }
+        pushVC(vc)
     }
 }
 
