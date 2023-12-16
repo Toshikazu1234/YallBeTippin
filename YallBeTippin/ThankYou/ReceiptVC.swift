@@ -12,6 +12,7 @@ class ReceiptVC: UIViewController {
     
     let orderItems: [MenuItem]
     let total: Double
+    let tip: TipPercentage
     
     lazy var restartButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
@@ -27,6 +28,7 @@ class ReceiptVC: UIViewController {
     init(coder: NSCoder, orderItems: [MenuItem], tip: TipPercentage) {
         self.orderItems = orderItems
         self.total = orderItems.calculateTotal(plus: tip)
+        self.tip = tip
         super.init(coder: coder)!
     }
     
@@ -47,15 +49,22 @@ class ReceiptVC: UIViewController {
 
 extension ReceiptVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderItems.count + 1
+        return orderItems.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < orderItems.count {
+        let row = indexPath.row
+        if row < orderItems.count {
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: ReceiptRow.id,
                 for: indexPath) as! ReceiptRow
             cell.configure(orderItems[indexPath.row])
+            return cell
+        } else if row == orderItems.count {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: TipRow.id,
+                for: indexPath) as! TipRow
+            cell.configure(tip: tip)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(
