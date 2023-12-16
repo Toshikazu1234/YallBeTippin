@@ -48,7 +48,12 @@ class MenuRow: UITableViewCell {
         nameLabel.text = menuItem.name
         priceLabel.text = menuItem.price.toCurrency()
         img.image = UIImage(named: menuItem.img)
-        verticalStack.isHidden = menuItem.orderCount > 0 ? false : true
+        if menuItem.orderCount > 0 {
+            verticalStack.isHidden = false
+            orderNumberLabel.text = "\(menuItem.orderCount)"
+        } else {
+            verticalStack.isHidden = true
+        }
     }
     
     @IBAction func didTapPlusButton() {
@@ -57,7 +62,7 @@ class MenuRow: UITableViewCell {
     }
     
     @IBAction func didTapMinusButton() {
-        guard let menuItem, let indexPath else { return }
+        guard let menuItem, let indexPath, menuItem.orderCount >= 0 else { return }
         delegate?.didMinus(menuItem, indexPath)
     }
 }

@@ -56,7 +56,7 @@ class CartRow: UITableViewCell {
     }
     
     @IBAction func didTapMinusButton() {
-        guard let orderItem, let indexPath else { return }
+        guard let orderItem, let indexPath, orderItem.orderCount >= 0 else { return }
         delegate?.didMinus(orderItem, indexPath)
     }
 }
