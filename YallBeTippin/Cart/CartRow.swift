@@ -36,7 +36,7 @@ class CartRow: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        img.layer.cornerRadius = 10
+        img.layer.cornerRadius = 20
         plusButton.layer.cornerRadius = plusButton.frame.height / 2
         minusButton.layer.cornerRadius = minusButton.frame.height / 2
     }
