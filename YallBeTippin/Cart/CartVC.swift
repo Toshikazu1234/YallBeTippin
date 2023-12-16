@@ -57,7 +57,8 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CartRow.id,
             for: indexPath) as! CartRow
-        cell.configure(orderItems[indexPath.row])
+        cell.configure(orderItems[indexPath.row], indexPath)
+        cell.delegate = self
         return cell
     }
     
@@ -69,5 +70,17 @@ extension CartVC: UITableViewDataSource, UITableViewDelegate {
         guard editingStyle == .delete else { return }
         orderItems.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+}
+
+extension CartVC: CartRowDelegate {
+    func didAdd(_ orderItem: MenuItem, _ indexPath: IndexPath) {
+        orderItems[indexPath.row].orderCount += 1
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
+    func didMinus(_ orderItem: MenuItem, _ indexPath: IndexPath) {
+        orderItems[indexPath.row].orderCount -= 1
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

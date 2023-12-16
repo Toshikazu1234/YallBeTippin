@@ -8,13 +8,14 @@
 import UIKit
 
 protocol CartRowDelegate: AnyObject {
-    func didAdd(_ orderItem: MenuItem)
-    func didMinus(_ orderItem: MenuItem)
+    func didAdd(_ orderItem: MenuItem, _ indexPath: IndexPath)
+    func didMinus(_ orderItem: MenuItem, _ indexPath: IndexPath)
 }
 
 class CartRow: UITableViewCell {
     static let id = "CartRow"
     var orderItem: MenuItem?
+    var indexPath: IndexPath?
     weak var delegate: CartRowDelegate?
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -40,8 +41,9 @@ class CartRow: UITableViewCell {
         minusButton.layer.cornerRadius = minusButton.frame.height / 2
     }
     
-    func configure(_ orderItem: MenuItem) {
+    func configure(_ orderItem: MenuItem, _ indexPath: IndexPath) {
         self.orderItem = orderItem
+        self.indexPath = indexPath
         nameLabel.text = orderItem.name
         priceLabel.text = orderItem.price.toCurrency()
         img.image = UIImage(named: orderItem.img)
@@ -49,12 +51,12 @@ class CartRow: UITableViewCell {
     }
     
     @IBAction func didTapPlusButton() {
-        guard let orderItem else { return }
-        delegate?.didAdd(orderItem)
+        guard let orderItem, let indexPath else { return }
+        delegate?.didAdd(orderItem, indexPath)
     }
     
     @IBAction func didTapMinusButton() {
-        guard let orderItem else { return }
-        delegate?.didMinus(orderItem)
+        guard let orderItem, let indexPath else { return }
+        delegate?.didMinus(orderItem, indexPath)
     }
 }
