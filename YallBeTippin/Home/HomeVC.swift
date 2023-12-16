@@ -53,7 +53,8 @@ class HomeVC: UIViewController {
         let vc = sb.instantiateViewController(identifier: CartVC.id) { [unowned self] coder in
             let vc = CartVC(
                 coder: coder,
-                orderItems: getOrderItems())
+                orderItems: getOrderItems(),
+                delegate: self)
             return vc
         }
         pushVC(vc)
@@ -99,5 +100,17 @@ extension HomeVC: MenuRowDelegate {
     func didMinus(_ orderItem: MenuItem, _ indexPath: IndexPath) {
         menuItems[indexPath.row].orderCount -= 1
         tableView.reloadRows(at: [indexPath], with: .none)
+    }
+}
+
+extension HomeVC: CartVCDelegate {
+    func updateItems(using orderItems: [MenuItem]) {
+        for var item in menuItems {
+            if let orderItem = orderItems.first(where: {$0.name == item.name}) {
+                item.orderCount = orderItem.orderCount
+            } else {
+                item.orderCount = 0
+            }
+        }
     }
 }

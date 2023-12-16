@@ -7,14 +7,20 @@
 
 import UIKit
 
+protocol CartVCDelegate: AnyObject {
+    func updateItems(using orderItems: [MenuItem])
+}
+
 class CartVC: UIViewController {
     static let id = "CartVC"
     @IBOutlet weak var tableView: UITableView!
     
     var orderItems: [MenuItem]
+    let delegate: CartVCDelegate
     
-    init(coder: NSCoder, orderItems: [MenuItem]) {
+    init(coder: NSCoder, orderItems: [MenuItem], delegate: CartVCDelegate) {
         self.orderItems = orderItems
+        self.delegate = delegate
         super.init(coder: coder)!
     }
     
@@ -25,6 +31,11 @@ class CartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate.updateItems(using: orderItems)
     }
     
     func setupTableView() {
