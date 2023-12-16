@@ -72,7 +72,16 @@ class TipVC: UIViewController {
     
     @objc func didTapConfirmButton() {
         let total = calculateTotal()
-        // navigate to ThankYouVC
+        let sb = UIStoryboard(
+            name: ThankYouVC.id,
+            bundle: nil)
+        let vc = sb.instantiateViewController(identifier: ThankYouVC.id) { [unowned self] coder in
+            let thankYouVC = ThankYouVC(
+                coder: coder,
+                orderItems: orderItems)
+            return thankYouVC
+        }
+        pushVC(vc)
     }
     
     @IBAction func didTapSmallTipButton() {
