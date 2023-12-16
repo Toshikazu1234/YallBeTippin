@@ -38,6 +38,7 @@ class ReceiptVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = restartButton
         tableView.dataSource = self
         tableView.delegate = self
     }
