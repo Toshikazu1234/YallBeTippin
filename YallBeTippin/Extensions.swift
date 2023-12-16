@@ -17,8 +17,23 @@ extension Double {
     }
 }
 
+extension [MenuItem] {
+    func calculateTotal(plus tip: TipPercentage) -> Double {
+        var total: Double = 0
+        self.forEach { item in
+            let count = Double(item.orderCount)
+            total += item.price * count
+        }
+        return total * tip.rawValue
+    }
+}
+
 extension UIViewController {
     func pushVC(_ vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func popToRoot() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }

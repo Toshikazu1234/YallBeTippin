@@ -16,6 +16,9 @@
 		500F9D502B2D2F190059EB5E /* CartVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 500F9D4F2B2D2F190059EB5E /* CartVC.storyboard */; };
 		500F9D522B2D2F210059EB5E /* TipVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 500F9D512B2D2F210059EB5E /* TipVC.storyboard */; };
 		500F9D542B2D2F2D0059EB5E /* ThankYouVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 500F9D532B2D2F2D0059EB5E /* ThankYouVC.storyboard */; };
+		501F08042B2E409E002DC221 /* ReceiptRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F08032B2E409E002DC221 /* ReceiptRow.swift */; };
+		501F08062B2E431B002DC221 /* TipPercentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F08052B2E431B002DC221 /* TipPercentage.swift */; };
+		501F08082B2E443C002DC221 /* TotalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F08072B2E443C002DC221 /* TotalCell.swift */; };
 		50339B1F2B2D26FD00F018D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50339B1E2B2D26FD00F018D4 /* AppDelegate.swift */; };
 		50339B212B2D26FD00F018D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50339B202B2D26FD00F018D4 /* SceneDelegate.swift */; };
 		50339B232B2D26FD00F018D4 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50339B222B2D26FD00F018D4 /* HomeVC.swift */; };
@@ -37,6 +40,9 @@
 		500F9D4F2B2D2F190059EB5E /* CartVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CartVC.storyboard; sourceTree = "<group>"; };
 		500F9D512B2D2F210059EB5E /* TipVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TipVC.storyboard; sourceTree = "<group>"; };
 		500F9D532B2D2F2D0059EB5E /* ThankYouVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ThankYouVC.storyboard; sourceTree = "<group>"; };
+		501F08032B2E409E002DC221 /* ReceiptRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptRow.swift; sourceTree = "<group>"; };
+		501F08052B2E431B002DC221 /* TipPercentage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipPercentage.swift; sourceTree = "<group>"; };
+		501F08072B2E443C002DC221 /* TotalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCell.swift; sourceTree = "<group>"; };
 		50339B1B2B2D26FD00F018D4 /* YallBeTippin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YallBeTippin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50339B1E2B2D26FD00F018D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50339B202B2D26FD00F018D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				500ACDC42B2D35CA0096574B /* MenuItem.swift */,
+				501F08052B2E431B002DC221 /* TipPercentage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +146,8 @@
 			children = (
 				50339B362B2D27D700F018D4 /* ThankYouVC.swift */,
 				500F9D532B2D2F2D0059EB5E /* ThankYouVC.storyboard */,
+				501F08032B2E409E002DC221 /* ReceiptRow.swift */,
+				501F08072B2E443C002DC221 /* TotalCell.swift */,
 			);
 			path = ThankYou;
 			sourceTree = "<group>";
@@ -221,11 +230,14 @@
 				50339B232B2D26FD00F018D4 /* HomeVC.swift in Sources */,
 				500F9D4E2B2D2E470059EB5E /* MenuRow.swift in Sources */,
 				500ACDC12B2D34390096574B /* CartRow.swift in Sources */,
+				501F08042B2E409E002DC221 /* ReceiptRow.swift in Sources */,
 				50339B372B2D27D700F018D4 /* ThankYouVC.swift in Sources */,
 				50339B352B2D27BE00F018D4 /* TipVC.swift in Sources */,
 				50339B1F2B2D26FD00F018D4 /* AppDelegate.swift in Sources */,
 				500ACDC52B2D35CA0096574B /* MenuItem.swift in Sources */,
 				50339B332B2D277600F018D4 /* CartVC.swift in Sources */,
+				501F08062B2E431B002DC221 /* TipPercentage.swift in Sources */,
+				501F08082B2E443C002DC221 /* TotalCell.swift in Sources */,
 				500ACDC72B2D5F7B0096574B /* Api.swift in Sources */,
 				500ACDC92B2D66100096574B /* Extensions.swift in Sources */,
 				50339B212B2D26FD00F018D4 /* SceneDelegate.swift in Sources */,

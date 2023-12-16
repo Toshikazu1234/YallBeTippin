@@ -11,12 +11,6 @@ class TipVC: UIViewController {
     static let id = "TipVC"
     
     let orderItems: [MenuItem]
-    enum TipPercentage: Double {
-        case small = 0.18
-        case medium = 0.2
-        case large = 0.22
-        case none = 0
-    }
     var tipPercentage: TipPercentage = .small
     
     lazy var confirmButton: UIBarButtonItem = {
@@ -71,14 +65,14 @@ class TipVC: UIViewController {
     }
     
     @objc func didTapConfirmButton() {
-        let total = calculateTotal()
         let sb = UIStoryboard(
             name: ThankYouVC.id,
             bundle: nil)
         let vc = sb.instantiateViewController(identifier: ThankYouVC.id) { [unowned self] coder in
             let thankYouVC = ThankYouVC(
                 coder: coder,
-                orderItems: orderItems)
+                orderItems: orderItems,
+                tip: tipPercentage)
             return thankYouVC
         }
         pushVC(vc)
@@ -112,14 +106,5 @@ class TipVC: UIViewController {
         tipButtons.forEach { button in
             button.isSelected = false
         }
-    }
-    
-    func calculateTotal() -> Double {
-        var total: Double = 0
-        orderItems.forEach { item in
-            let count = Double(item.orderCount)
-            total += item.price * count
-        }
-        return total * tipPercentage.rawValue
     }
 }
