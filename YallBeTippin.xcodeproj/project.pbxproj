@@ -27,7 +27,7 @@
 		50339B2B2B2D270100F018D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50339B292B2D270100F018D4 /* LaunchScreen.storyboard */; };
 		50339B332B2D277600F018D4 /* CartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50339B322B2D277600F018D4 /* CartVC.swift */; };
 		50339B352B2D27BE00F018D4 /* TipVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50339B342B2D27BE00F018D4 /* TipVC.swift */; };
-		50339B372B2D27D700F018D4 /* ThankYouVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50339B362B2D27D700F018D4 /* ThankYouVC.swift */; };
+		50339B372B2D27D700F018D4 /* ReceiptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50339B362B2D27D700F018D4 /* ReceiptVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +53,7 @@
 		50339B2C2B2D270100F018D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50339B322B2D277600F018D4 /* CartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVC.swift; sourceTree = "<group>"; };
 		50339B342B2D27BE00F018D4 /* TipVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipVC.swift; sourceTree = "<group>"; };
-		50339B362B2D27D700F018D4 /* ThankYouVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouVC.swift; sourceTree = "<group>"; };
+		50339B362B2D27D700F018D4 /* ReceiptVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +144,7 @@
 		50339B3B2B2D285D00F018D4 /* ThankYou */ = {
 			isa = PBXGroup;
 			children = (
-				50339B362B2D27D700F018D4 /* ThankYouVC.swift */,
+				50339B362B2D27D700F018D4 /* ReceiptVC.swift */,
 				500F9D532B2D2F2D0059EB5E /* ThankYouVC.storyboard */,
 				501F08032B2E409E002DC221 /* ReceiptRow.swift */,
 				501F08072B2E443C002DC221 /* TotalCell.swift */,
@@ -231,7 +231,7 @@
 				500F9D4E2B2D2E470059EB5E /* MenuRow.swift in Sources */,
 				500ACDC12B2D34390096574B /* CartRow.swift in Sources */,
 				501F08042B2E409E002DC221 /* ReceiptRow.swift in Sources */,
-				50339B372B2D27D700F018D4 /* ThankYouVC.swift in Sources */,
+				50339B372B2D27D700F018D4 /* ReceiptVC.swift in Sources */,
 				50339B352B2D27BE00F018D4 /* TipVC.swift in Sources */,
 				50339B1F2B2D26FD00F018D4 /* AppDelegate.swift in Sources */,
 				500ACDC52B2D35CA0096574B /* MenuItem.swift in Sources */,

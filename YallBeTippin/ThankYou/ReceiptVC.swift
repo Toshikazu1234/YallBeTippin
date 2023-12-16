@@ -1,5 +1,5 @@
 //
-//  ThankYouVC.swift
+//  ReceiptVC.swift
 //  YallBeTippin
 //
 //  Created by R K on 12/15/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ThankYouVC: UIViewController {
+class ReceiptVC: UIViewController {
     static let id = "ThankYouVC"
     
     let orderItems: [MenuItem]
@@ -45,7 +45,7 @@ class ThankYouVC: UIViewController {
     }
 }
 
-extension ThankYouVC: UITableViewDataSource, UITableViewDelegate {
+extension ReceiptVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return orderItems.count + 1
     }

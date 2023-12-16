@@ -66,10 +66,10 @@ class TipVC: UIViewController {
     
     @objc func didTapConfirmButton() {
         let sb = UIStoryboard(
-            name: ThankYouVC.id,
+            name: ReceiptVC.id,
             bundle: nil)
-        let vc = sb.instantiateViewController(identifier: ThankYouVC.id) { [unowned self] coder in
-            let thankYouVC = ThankYouVC(
+        let vc = sb.instantiateViewController(identifier: ReceiptVC.id) { [unowned self] coder in
+            let thankYouVC = ReceiptVC(
                 coder: coder,
                 orderItems: orderItems,
                 tip: tipPercentage)
