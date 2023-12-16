@@ -8,6 +8,7 @@
 import UIKit
 
 class ThankYouVC: UIViewController {
+    static let id = "ThankYouVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()

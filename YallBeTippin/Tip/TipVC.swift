@@ -8,6 +8,7 @@
 import UIKit
 
 class TipVC: UIViewController {
+    static let id = "TipVC"
 
     override func viewDidLoad() {
         super.viewDidLoad()
