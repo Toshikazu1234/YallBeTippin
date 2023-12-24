@@ -51,10 +51,11 @@ class HomeVC: UIViewController {
         let sb = UIStoryboard(
             name: CartVC.id,
             bundle: nil)
-        let vc = sb.instantiateViewController(identifier: CartVC.id) { [unowned self] coder in
+        let items = getOrderItems()
+        let vc = sb.instantiateViewController(identifier: CartVC.id) { coder in
             let cartVC = CartVC(
                 coder: coder,
-                orderItems: getOrderItems())
+                orderItems: items)
             return cartVC
         } as! CartVC
         vc.delegate = self
