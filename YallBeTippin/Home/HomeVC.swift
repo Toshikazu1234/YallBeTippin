@@ -98,12 +98,12 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension HomeVC: MenuRowDelegate {
-    func didAdd(_ orderItem: MenuItem, _ indexPath: IndexPath) {
+    func didAdd(_ indexPath: IndexPath) {
         menuItems[indexPath.row].orderCount += 1
         tableView.reloadRows(at: [indexPath], with: .none)
     }
     
-    func didMinus(_ orderItem: MenuItem, _ indexPath: IndexPath) {
+    func didMinus(_ indexPath: IndexPath) {
         menuItems[indexPath.row].orderCount -= 1
         tableView.reloadRows(at: [indexPath], with: .none)
     }

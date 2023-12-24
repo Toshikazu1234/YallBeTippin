@@ -8,13 +8,12 @@
 import UIKit
 
 protocol MenuRowDelegate: AnyObject {
-    func didAdd(_ orderItem: MenuItem, _ indexPath: IndexPath)
-    func didMinus(_ orderItem: MenuItem, _ indexPath: IndexPath)
+    func didAdd(_ indexPath: IndexPath)
+    func didMinus(_ indexPath: IndexPath)
 }
 
 class MenuRow: UITableViewCell {
     static let id = "MenuRow"
-    var menuItem: MenuItem?
     var indexPath: IndexPath?
     weak var delegate: MenuRowDelegate?
     
@@ -43,7 +42,6 @@ class MenuRow: UITableViewCell {
     }
     
     func configure(_ menuItem: MenuItem, _ indexPath: IndexPath) {
-        self.menuItem = menuItem
         self.indexPath = indexPath
         nameLabel.text = menuItem.name
         priceLabel.text = menuItem.price.toCurrency()
@@ -57,12 +55,12 @@ class MenuRow: UITableViewCell {
     }
     
     @IBAction func didTapPlusButton() {
-        guard let menuItem, let indexPath else { return }
-        delegate?.didAdd(menuItem, indexPath)
+        guard let indexPath else { return }
+        delegate?.didAdd(indexPath)
     }
     
     @IBAction func didTapMinusButton() {
-        guard let menuItem, let indexPath, menuItem.orderCount >= 0 else { return }
-        delegate?.didMinus(menuItem, indexPath)
+        guard let indexPath else { return }
+        delegate?.didMinus(indexPath)
     }
 }
