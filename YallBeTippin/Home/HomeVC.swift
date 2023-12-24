@@ -54,10 +54,10 @@ class HomeVC: UIViewController {
         let vc = sb.instantiateViewController(identifier: CartVC.id) { [unowned self] coder in
             let cartVC = CartVC(
                 coder: coder,
-                orderItems: getOrderItems(),
-                delegate: self)
+                orderItems: getOrderItems())
             return cartVC
-        }
+        } as! CartVC
+        vc.delegate = self
         pushVC(vc)
     }
     

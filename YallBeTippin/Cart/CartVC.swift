@@ -26,11 +26,10 @@ class CartVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var orderItems: [MenuItem]
-    let delegate: CartVCDelegate
+    weak var delegate: CartVCDelegate?
     
-    init(coder: NSCoder, orderItems: [MenuItem], delegate: CartVCDelegate) {
+    init(coder: NSCoder, orderItems: [MenuItem]) {
         self.orderItems = orderItems
-        self.delegate = delegate
         super.init(coder: coder)!
     }
     
@@ -47,7 +46,7 @@ class CartVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate.updateItems(using: orderItems)
+        delegate?.updateItems(using: orderItems)
     }
     
     func setupTableView() {
