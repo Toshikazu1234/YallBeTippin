@@ -10,11 +10,11 @@ import UIKit
 class ReceiptVC: UIViewController {
     static let id = "ThankYouVC"
     
-    let orderItems: [MenuItem]
-    let total: Double
-    let tip: TipPercentage
+    private let orderItems: [MenuItem]
+    private let total: Double
+    private let tip: TipPercentage
     
-    lazy var restartButton: UIBarButtonItem = {
+    private lazy var restartButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
             title: "Restart",
             style: .plain,
@@ -23,7 +23,7 @@ class ReceiptVC: UIViewController {
         return button
     }()
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     init(coder: NSCoder, orderItems: [MenuItem], tip: TipPercentage) {
         self.orderItems = orderItems
@@ -43,7 +43,7 @@ class ReceiptVC: UIViewController {
         tableView.delegate = self
     }
     
-    @objc func restart() {
+    @objc private func restart() {
         popToRoot()
     }
 }

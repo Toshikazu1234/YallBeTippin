@@ -10,10 +10,10 @@ import UIKit
 class TipVC: UIViewController {
     static let id = "TipVC"
     
-    let orderItems: [MenuItem]
-    var tipPercentage: TipPercentage = .small
+    private let orderItems: [MenuItem]
+    private var tipPercentage: TipPercentage = .small
     
-    lazy var confirmButton: UIBarButtonItem = {
+    private lazy var confirmButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
             title: "Confirm",
             style: .plain,
@@ -22,12 +22,12 @@ class TipVC: UIViewController {
         return button
     }()
     
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var smallTipButton: UIButton!
-    @IBOutlet weak var mediumTipButton: UIButton!
-    @IBOutlet weak var largeTipButton: UIButton!
-    @IBOutlet weak var skipButton: UIButton!
-    lazy var tipButtons: [UIButton] = [
+    @IBOutlet private weak var stackView: UIStackView!
+    @IBOutlet private weak var smallTipButton: UIButton!
+    @IBOutlet private weak var mediumTipButton: UIButton!
+    @IBOutlet private weak var largeTipButton: UIButton!
+    @IBOutlet private weak var skipButton: UIButton!
+    private lazy var tipButtons: [UIButton] = [
         smallTipButton,
         mediumTipButton,
         largeTipButton,
@@ -64,7 +64,7 @@ class TipVC: UIViewController {
         }
     }
     
-    @objc func didTapConfirmButton() {
+    @objc private func didTapConfirmButton() {
         let sb = UIStoryboard(
             name: ReceiptVC.id,
             bundle: nil)
@@ -78,31 +78,31 @@ class TipVC: UIViewController {
         pushVC(vc)
     }
     
-    @IBAction func didTapSmallTipButton() {
+    @IBAction private func didTapSmallTipButton() {
         deselectTipButtons()
         smallTipButton.isSelected = true
         tipPercentage = .small
     }
     
-    @IBAction func didTapMediumTipButton() {
+    @IBAction private func didTapMediumTipButton() {
         deselectTipButtons()
         mediumTipButton.isSelected = true
         tipPercentage = .medium
     }
     
-    @IBAction func didTapLargeTipButton() {
+    @IBAction private func didTapLargeTipButton() {
         deselectTipButtons()
         largeTipButton.isSelected = true
         tipPercentage = .large
     }
     
-    @IBAction func didTapSkipButton() {
+    @IBAction private func didTapSkipButton() {
         deselectTipButtons()
         skipButton.isSelected = true
         tipPercentage = .none
     }
     
-    func deselectTipButtons() {
+    private func deselectTipButtons() {
         tipButtons.forEach { button in
             button.isSelected = false
         }

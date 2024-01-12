@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeVC: UIViewController {
-    var menuItems: [MenuItem] = []
+    private var menuItems: [MenuItem] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,16 +19,16 @@ class HomeVC: UIViewController {
         setupTableView()
     }
     
-    func fetchMenuItems() {
+    private func fetchMenuItems() {
         menuItems = Api.shared.fetchMenu()
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
     }
     
-    @IBAction func didTapViewCart(_ sender: UIBarButtonItem) {
+    @IBAction private func didTapViewCart(_ sender: UIBarButtonItem) {
         if menuItems.contains(where: {$0.orderCount > 0}) {
             navigateToCart()
         } else {
@@ -36,7 +36,7 @@ class HomeVC: UIViewController {
         }
     }
     
-    func displayAlert() {
+    private func displayAlert() {
         let alert = UIAlertController(
             title: "Alert",
             message: "Your cart is empty!",
@@ -47,7 +47,7 @@ class HomeVC: UIViewController {
         present(alert, animated: true)
     }
     
-    func navigateToCart() {
+    private func navigateToCart() {
         let sb = UIStoryboard(
             name: CartVC.id,
             bundle: nil)
@@ -62,7 +62,7 @@ class HomeVC: UIViewController {
         pushVC(vc)
     }
     
-    func getOrderItems() -> [MenuItem] {
+    private func getOrderItems() -> [MenuItem] {
         var orderItems: [MenuItem] = []
         menuItems.forEach { item in
             if item.orderCount > 0 {

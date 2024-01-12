@@ -10,7 +10,7 @@ import UIKit
 class TipRow: UITableViewCell {
     static let id = "TipRow"
 
-    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet private weak var tipLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

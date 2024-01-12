@@ -14,7 +14,7 @@ protocol CartVCDelegate: AnyObject {
 class CartVC: UIViewController {
     static let id = "CartVC"
     
-    lazy var confirmButton: UIBarButtonItem = {
+    private lazy var confirmButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
             title: "Confirm",
             style: .plain,
@@ -23,9 +23,9 @@ class CartVC: UIViewController {
         return button
     }()
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
-    var orderItems: [MenuItem]
+    private var orderItems: [MenuItem]
     weak var delegate: CartVCDelegate?
     
     init(coder: NSCoder, orderItems: [MenuItem]) {
@@ -49,7 +49,7 @@ class CartVC: UIViewController {
         delegate?.updateItems(using: orderItems)
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(
@@ -57,7 +57,7 @@ class CartVC: UIViewController {
             forCellReuseIdentifier: CartRow.id)
     }
     
-    @objc func didTapConfirmButton() {
+    @objc private func didTapConfirmButton() {
         let sb = UIStoryboard(
             name: TipVC.id,
             bundle: nil)

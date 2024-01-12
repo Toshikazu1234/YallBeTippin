@@ -10,9 +10,9 @@ import UIKit
 class ReceiptRow: UITableViewCell {
     static let id = "ReceiptRow"
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var countLabel: UILabel!
+    @IBOutlet private weak var totalLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +29,7 @@ class ReceiptRow: UITableViewCell {
         totalLabel.text = total.toCurrency()
     }
     
-    func calculateTotal(_ orderItem: MenuItem) -> Double {
+    private func calculateTotal(_ orderItem: MenuItem) -> Double {
         let count = Double(orderItem.orderCount)
         return orderItem.price * count
     }

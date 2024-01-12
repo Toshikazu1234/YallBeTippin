@@ -14,17 +14,17 @@ protocol MenuRowDelegate: AnyObject {
 
 class MenuRow: UITableViewCell {
     static let id = "MenuRow"
-    var indexPath: IndexPath?
+    private var indexPath: IndexPath?
     weak var delegate: MenuRowDelegate?
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var img: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var img: UIImageView!
     
-    @IBOutlet weak var verticalStack: UIStackView!
-    @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var orderNumberLabel: UILabel!
-    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet private weak var verticalStack: UIStackView!
+    @IBOutlet private weak var plusButton: UIButton!
+    @IBOutlet private weak var orderNumberLabel: UILabel!
+    @IBOutlet private weak var minusButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,12 +54,12 @@ class MenuRow: UITableViewCell {
         }
     }
     
-    @IBAction func didTapPlusButton() {
+    @IBAction private func didTapPlusButton() {
         guard let indexPath else { return }
         delegate?.didAdd(indexPath)
     }
     
-    @IBAction func didTapMinusButton() {
+    @IBAction private func didTapMinusButton() {
         guard let indexPath else { return }
         delegate?.didMinus(indexPath)
     }
